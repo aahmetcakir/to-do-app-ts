@@ -1,0 +1,30 @@
+.todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    width: 500px;
+    padding-left: 12px;
+    border-left: 2px red solid;
+}
+
+.todo-complete {
+    border-left: 2px green solid;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.delete-button {
+    margin-right: 8px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.complete-button {
+    background-color: green;
+    color: white;
+}

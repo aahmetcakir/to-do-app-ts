@@ -1,0 +1,13 @@
+.group-name {
+    text-align: start;
+    padding: 8px 8px 16px 0px;
+    font-size: 20px;
+}
+
+.uncomplete {
+    color: red;
+}
+
+.complete {
+    color: green;
+}
