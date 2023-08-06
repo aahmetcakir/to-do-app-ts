@@ -1,13 +1,15 @@
-import { ITodos } from "../interfaces/Todos";
+import { ITodo } from "../interfaces/Todo";
 import Todo from "./Todo";
 import './TodoGroup.css'
 interface Props {
-    todos: ITodos
+    todos: Array<ITodo>
+    removeTodo(todo: ITodo): void
+    markAsComplete(todo: ITodo): void
 }
 
-function TodoGroup({ todos }: Props) {
-    const completedTodos = todos.data.filter(todo => todo.isCompleted === true)
-    const uncompletedTodos = todos.data.filter(todo => todo.isCompleted === false)
+function TodoGroup({ todos, removeTodo, markAsComplete }: Props) {
+    const completedTodos = todos.filter(todo => todo.isCompleted === true)
+    const uncompletedTodos = todos.filter(todo => todo.isCompleted === false)
 
     return (
         <>
@@ -19,7 +21,10 @@ function TodoGroup({ todos }: Props) {
                 {
                     uncompletedTodos.map((todo, i) => {
                         return (
-                            <Todo key={i} todo={todo} />
+                            <Todo key={i} todo={todo}
+                                removeTodo={removeTodo}
+                                markAsComplete={markAsComplete}
+                            />
                         )
                     })
                 }
@@ -32,7 +37,12 @@ function TodoGroup({ todos }: Props) {
                 {
                     completedTodos.map((todo, i) => {
                         return (
-                            <Todo key={i} todo={todo} />
+                            <Todo
+                                key={i}
+                                todo={todo}
+                                removeTodo={removeTodo}
+                                markAsComplete={markAsComplete}
+                            />
                         )
                     })
                 }
