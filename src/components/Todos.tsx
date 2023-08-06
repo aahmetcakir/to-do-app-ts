@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { ITodo } from '../interfaces/Todo'
 import TodoGroup from './TodoGroup'
-import './Todos.css'
 import AddTodo from './AddTodo'
 
 function Todos() {

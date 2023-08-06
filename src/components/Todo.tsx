@@ -5,6 +5,7 @@ interface Props {
     removeTodo(todo: ITodo): void
     markAsComplete(todo: ITodo): void
 }
+
 function Todo({ todo, removeTodo, markAsComplete }: Props) {
     return (
         <div className={`todo ${todo.isCompleted === true ? 'todo-complete' : ''}`}>

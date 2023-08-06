@@ -1,6 +1,7 @@
 import { ITodo } from "../interfaces/Todo";
 import Todo from "./Todo";
 import './TodoGroup.css'
+
 interface Props {
     todos: Array<ITodo>
     removeTodo(todo: ITodo): void
