@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ITodo } from '../interfaces/Todo'
 import TodoGroup from './TodoGroup'
 import './Todos.css'
+import AddTodo from './AddTodo'
 
 function Todos() {
     const [todos, setTodos] = useState<Array<ITodo>>([
@@ -47,9 +48,25 @@ function Todos() {
         },
     ])
 
+    const [todo, setTodo] = useState<string>()
+
+    const addTodo = (e: React.FormEvent<HTMLInputElement>): void => {
+        e.preventDefault()
+        if (todo) {
+            const newTodo: ITodo = {
+                id: todos[todos.length - 1].id + 1,
+                title: todo,
+                isCompleted: false
+            }
+            setTodos([...todos, { ...newTodo }])
+        }
+        setTodo('')
+    }
+
     const removeTodo = (todo: ITodo): void => {
         setTodos(todos.filter(t => t.id !== todo.id))
     }
+
     const markAsComplete = (todo: ITodo): void => {
         const todoIndex = todos.findIndex(t => t.id === todo.id)
         todos[todoIndex].isCompleted = true
@@ -61,6 +78,7 @@ function Todos() {
             <h1>
                 My Tasks
             </h1>
+            <AddTodo setTodo={setTodo} addTodo={addTodo} todo={todo} />
             <TodoGroup todos={todos} removeTodo={removeTodo} markAsComplete={markAsComplete} />
         </div>
     )
