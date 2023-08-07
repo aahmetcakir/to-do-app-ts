@@ -65,7 +65,7 @@ function Todos() {
     const removeTodo = (todo: ITodo): void => {
         setTodos(todos.filter(t => t.id !== todo.id))
     }
-
+    // todo
     const markAsComplete = (todo: ITodo): void => {
         const todoIndex = todos.findIndex(t => t.id === todo.id)
         todos[todoIndex].isCompleted = true

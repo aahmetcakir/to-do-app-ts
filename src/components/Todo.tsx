@@ -8,7 +8,8 @@ interface Props {
 
 function Todo({ todo, removeTodo, markAsComplete }: Props) {
     return (
-        <div className={`todo ${todo.isCompleted === true ? 'todo-complete' : ''}`}>
+        // todo
+        <div className={`todo ${todo.isCompleted ? 'todo-complete' : ''}`}>
             <div className="todo-title">
                 {todo.title}
             </div>

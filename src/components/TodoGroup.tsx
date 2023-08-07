@@ -9,20 +9,20 @@ interface Props {
 }
 
 function TodoGroup({ todos, removeTodo, markAsComplete }: Props) {
-    const completedTodos = todos.filter(todo => todo.isCompleted === true)
-    const uncompletedTodos = todos.filter(todo => todo.isCompleted === false)
+    const completedTodos = todos.filter(todo => todo.isCompleted)
+    const uncompletedTodos = todos.filter(todo => !todo.isCompleted)
 
     return (
         <>
-            <div className={`group-name uncomplete`}
+            <div className="group-name uncomplete"
             >
                 Uncomplete
             </div>
             <div className="group">
                 {
-                    uncompletedTodos.map((todo, i) => {
+                    uncompletedTodos.map((todo) => {
                         return (
-                            <Todo key={i} todo={todo}
+                            <Todo key={`uncomplete-${todo.id}`} todo={todo}
                                 removeTodo={removeTodo}
                                 markAsComplete={markAsComplete}
                             />
@@ -30,16 +30,16 @@ function TodoGroup({ todos, removeTodo, markAsComplete }: Props) {
                     })
                 }
             </div>
-            <div className={`group-name complete`}
+            <div className="group-name complete"
             >
                 Complete
             </div>
             <div className="group">
                 {
-                    completedTodos.map((todo, i) => {
+                    completedTodos.map((todo) => {
                         return (
                             <Todo
-                                key={i}
+                                key={`complete-${todo.id}`}
                                 todo={todo}
                                 removeTodo={removeTodo}
                                 markAsComplete={markAsComplete}
